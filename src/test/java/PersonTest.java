@@ -20,7 +20,7 @@ public class PersonTest {
     @Test
     public void setName() {
         String expected = "John Doe";
-        person = new Person(null,null,null,null);
+        person = new Person();
         person.setName(expected);
         String actual = person.getName();
         Assert.assertEquals(expected,actual);
@@ -37,7 +37,7 @@ public class PersonTest {
     @Test
     public void setBirthday() {
         LocalDate expected = LocalDate.of(2000,1,1);
-        person = new Person(null, null,null,null);
+        person = new Person();
         person.setBirthday(expected);
         LocalDate actual = person.getBirthday();
         Assert.assertEquals(expected,actual);
@@ -54,7 +54,7 @@ public class PersonTest {
     @Test
     public void setGender() {
         Person.Sex expected = Person.Sex.MALE;
-        person = new Person(null,null,null,null);
+        person = new Person();
         person.setGender(expected);
         Person.Sex actual = person.getGender();
         Assert.assertEquals(expected,actual);
@@ -71,7 +71,7 @@ public class PersonTest {
     @Test
     public void setEmailAddress() {
         String expected = "email@ddr.ess";
-        person = new Person(null,null,null,null);
+        person = new Person();
         person.setEmailAddress(expected);
         String actual = person.getEmailAddress();
         Assert.assertEquals(expected,actual);

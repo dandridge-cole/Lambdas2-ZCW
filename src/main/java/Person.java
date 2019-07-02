@@ -12,7 +12,12 @@ public class Person {
     private Sex gender;
     private String emailAddress;
 
-    public Person() {}
+    public Person() {
+        this.name = "name";
+        this.birthday=LocalDate.MAX;
+        this.gender=Sex.MALE;
+        this.emailAddress="email";
+    }
 
     public Person(String name, LocalDate birthday, Sex gender, String emailAddress) {
         this.name = name;

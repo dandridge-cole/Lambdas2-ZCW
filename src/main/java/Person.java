@@ -66,14 +66,6 @@ public class Person {
                 ,this.getEmailAddress()));
     }
 
-    public static void printPersons(List<Person> roster, CheckPerson tester) {
-        for (Person p : roster) {
-            if (tester.test(p)) {
-                p.printPerson();
-            }
-        }
-    }
-
     //inner classes that implement the CheckPerson interface, but override the test method.
     //Abstract class, passed as parameter to printPoeple method, can create a new instance of the abstract class (of type "CheckPerson") as a paramenter to a call to the printPeople method
     // a lambda exmplression that takes in the same parameter and returns the expected type as the one method of the Interface can be passed as the parameter in place of the abstract class

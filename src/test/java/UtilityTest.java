@@ -24,9 +24,12 @@ public class UtilityTest {
 
     @Test
     public void printPersonsBirthdateFilter() {
-        Predicate<Person> pred = p -> p.getBirthday().compareTo(LocalDate.of(2000,01,01))<0;
-        Utility.Tester tester = util.new Tester(pred);
-        util.printPersons(ppl,tester);
+        util.printPersons(ppl,new CheckPerson(){
+            @Override
+            public boolean test(Person p) {
+                return p.getBirthday().compareTo(LocalDate.of(2000,01,01))<0;
+            }
+        });
         Integer expected = 2;
         Integer actual = util.printCounter;
         Assert.assertEquals(expected,actual);
@@ -34,9 +37,12 @@ public class UtilityTest {
 
     @Test
     public void printPersonsNameFilter() {
-        Predicate<Person> pred = p -> p.getName().charAt(0)=='M';
-        Utility.Tester tester = util.new Tester(pred);
-        util.printPersons(ppl,tester);
+        util.printPersons(ppl,new CheckPerson(){
+            @Override
+            public boolean test(Person p) {
+                return p.getName().charAt(0)=='M';
+            }
+        });
         Integer expected = 2;
         Integer actual = util.printCounter;
         Assert.assertEquals(expected,actual);
@@ -44,9 +50,12 @@ public class UtilityTest {
 
     @Test
     public void printPersonsEmailFilter() {
-        Predicate<Person> pred = p -> p.getEmailAddress()==null;
-        Utility.Tester tester = util.new Tester(pred);
-        util.printPersons(ppl,tester);
+        util.printPersons(ppl,new CheckPerson(){
+            @Override
+            public boolean test(Person p) {
+                return p.getEmailAddress()==null;
+            }
+        });
         Integer expected = 2;
         Integer actual = util.printCounter;
         Assert.assertEquals(expected,actual);
@@ -54,9 +63,12 @@ public class UtilityTest {
 
     @Test
     public void printPersonsGenderFilter() {
-        Predicate<Person> pred = p -> p.getGender().equals(Person.Sex.FEMALE);
-        Utility.Tester tester = util.new Tester(pred);
-        util.printPersons(ppl,tester);
+        util.printPersons(ppl,new CheckPerson(){
+            @Override
+            public boolean test(Person p) {
+                return p.getGender().equals(Person.Sex.FEMALE);
+            }
+        });
         Integer expected = 3;
         Integer actual = util.printCounter;
         Assert.assertEquals(expected,actual);

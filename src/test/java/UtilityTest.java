@@ -24,12 +24,7 @@ public class UtilityTest {
 
     @Test
     public void printPersonsBirthdateFilter() {
-        util.printPersons(ppl,new CheckPerson(){
-            @Override
-            public boolean test(Person p) {
-                return p.getBirthday().compareTo(LocalDate.of(2000,01,01))<0;
-            }
-        });
+        util.printPersons(ppl, p -> p.getBirthday().compareTo(LocalDate.of(2000,01,01))<0);
         Integer expected = 2;
         Integer actual = util.printCounter;
         Assert.assertEquals(expected,actual);
@@ -37,12 +32,7 @@ public class UtilityTest {
 
     @Test
     public void printPersonsNameFilter() {
-        util.printPersons(ppl,new CheckPerson(){
-            @Override
-            public boolean test(Person p) {
-                return p.getName().charAt(0)=='M';
-            }
-        });
+        util.printPersons(ppl, p -> p.getName().charAt(0)=='M');
         Integer expected = 2;
         Integer actual = util.printCounter;
         Assert.assertEquals(expected,actual);
@@ -50,12 +40,7 @@ public class UtilityTest {
 
     @Test
     public void printPersonsEmailFilter() {
-        util.printPersons(ppl,new CheckPerson(){
-            @Override
-            public boolean test(Person p) {
-                return p.getEmailAddress()==null;
-            }
-        });
+        util.printPersons(ppl, p -> p.getEmailAddress()==null);
         Integer expected = 2;
         Integer actual = util.printCounter;
         Assert.assertEquals(expected,actual);
@@ -63,12 +48,7 @@ public class UtilityTest {
 
     @Test
     public void printPersonsGenderFilter() {
-        util.printPersons(ppl,new CheckPerson(){
-            @Override
-            public boolean test(Person p) {
-                return p.getGender().equals(Person.Sex.FEMALE);
-            }
-        });
+        util.printPersons(ppl, p -> p.getGender().equals(Person.Sex.FEMALE));
         Integer expected = 3;
         Integer actual = util.printCounter;
         Assert.assertEquals(expected,actual);
